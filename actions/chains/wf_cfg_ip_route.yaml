@@ -1,0 +1,60 @@
+---
+    chain:
+        -
+            name: "start_cfg_session"
+            ref: "vR5600_base.start_cfg_session"
+            parameters:
+                deviceIP: "{{deviceIP}}"
+                login: "{{login}}"
+                password: "{{password}}"
+            publish:
+                cfgId: "{{ start_cfg_session.stdout }}"
+            on-success: "cfg_ip_route"
+            on-failure: "fail_status"
+        -
+            name: "cfg_ip_route"
+            ref: "vR5600_utils.cfg_ip_route"
+            parameters:
+                deviceIP: "{{deviceIP}}"
+                login: "{{login}}"
+                password: "{{password}}"
+                cmd_path: "{{system.cmd_path_key}}"
+                subnet: "{{subnet}}"
+                nextHop: "{{nextHop}}"
+            on-success: "commit"
+            on-failure: "fail_status"
+        -
+            name: "commit"
+            ref: "vR5600_base.commit"
+            parameters:
+                deviceIP: "{{deviceIP}}"
+                login: "{{login}}"
+                password: "{{password}}"
+                cmd_path: "{{system.cmd_path_key}}"
+            on-success: "save"
+            on-failure: "fail_status"
+        -
+            name: "save"
+            ref: "vR5600_base.save"
+            parameters:
+                deviceIP: "{{deviceIP}}"
+                login: "{{login}}"
+                password: "{{password}}"
+                cmd_path: "{{system.cmd_path_key}}"
+            on-success: "exit_cfg_session"
+            on-failure: "fail_status"
+        -
+            name: "exit_cfg_session"
+            ref: "vR5600_base.exit_cfg_session"
+            parameters:
+                deviceIP: "{{deviceIP}}"
+                login: "{{login}}"
+                password: "{{password}}"
+                cmd_path: "{{system.cmd_path_key}}"
+            on-failure: "fail_status"
+        -
+            name: "fail_status"
+            ref: "core.local"
+            parameters:
+                cmd: "echo fail"
+    default: "start_cfg_session"

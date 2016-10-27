@@ -1,0 +1,20 @@
+---
+name: poweroff
+pack: vR5600_utils
+description: Restart the device
+runner_type: python-script
+entry_point: "poweroff.py"
+enabled: false
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true

@@ -1,0 +1,20 @@
+---
+name: show_system_commit
+pack: vR5600_utils
+description: Perform a "show system commit"
+runner_type: python-script
+entry_point: "show_system_commit.py"
+enabled: true
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true

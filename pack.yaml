@@ -1,0 +1,9 @@
+---
+name: vR5600_utils
+description: Contains basic actions on vR to manipulate interfaces static routes and ping
+keywords:
+    - example
+    - test
+version: 0.1
+author: Mehdi Abdelouahab
+email: mabdelou@brocade.com

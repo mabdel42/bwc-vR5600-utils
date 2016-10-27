@@ -1,0 +1,29 @@
+---
+name: "wf_del_ip_route"
+description: "Workflow to delete a static route"
+pack: vR5600_utils
+runner_type: "action-chain"
+entry_point: "chains/wf_del_ip_route.yaml"
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true
+    subnet:
+        type: string
+        description: Destination IP subnet
+        required: true
+enabled: true
+notify:
+  on-complete:
+    message: "\"@channel: Action succeeded.\""
+    routes:
+      - "slack"

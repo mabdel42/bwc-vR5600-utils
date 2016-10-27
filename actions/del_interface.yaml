@@ -1,0 +1,32 @@
+---
+name: del_interface
+pack: vR5600_utils
+description: Delete an interface
+runner_type: python-script
+entry_point: "del_interface.py"
+enabled: true
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true
+    cmd_path:
+        type: string
+        description: Command path of the configuration session
+        required: true    
+    intfType:
+        type: string
+        description: Type of interface such as dataplane or loopback
+        required: true
+    intfNum:
+        type: string
+        description: Interface number
+        required: true

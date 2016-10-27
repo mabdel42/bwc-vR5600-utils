@@ -1,0 +1,24 @@
+---
+name: ping
+pack: vR5600_utils
+description: Perform a ping
+runner_type: python-script
+entry_point: "ping.py"
+enabled: true
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true
+    targetIP:
+        type: string
+        description: IP address to ping
+        required: true

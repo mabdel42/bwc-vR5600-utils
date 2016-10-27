@@ -1,0 +1,33 @@
+---
+name: "wf_del_interface"
+description: "Workflow to delete an interface"
+pack: vR5600_utils
+runner_type: "action-chain"
+entry_point: "chains/wf_del_interface.yaml"
+parameters:
+    deviceIP:
+        type: string
+        description: IP address of vRouter
+        required: true
+    login:
+        type: string
+        description: Login of vRouter
+        required: true
+    password:
+        type: string
+        description: Password of vRouter
+        required: true   
+    intfType:
+        type: string
+        description: Type of interface such dataplane or loopback
+        required: true
+    intfNum:
+        type: string
+        description: Interface number
+        required: true
+enabled: true
+notify:
+  on-complete:
+    message: "\"@channel: Action succeeded.\""
+    routes:
+      - "slack"
